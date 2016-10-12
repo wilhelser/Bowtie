@@ -109,6 +109,16 @@ function bowtie_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer', 'bowtie' ),
+		'id'            => 'footer',
+		'description'   => '',
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
 }
 add_action( 'widgets_init', 'bowtie_widgets_init' );
 
@@ -307,51 +317,26 @@ function contact_shortcode($atts) {
 add_shortcode('contact','contact_shortcode');
 
 function logo_shortcode($atts) {
+	$output = '';
 
-	$file = file_get_contents( get_template_directory() . '/assets/img/svg/'.$atts['type'].'-'.$atts['id'].'.svg' );
+	if(isset($file['id'])) {
+		$filename = 'logo-'.$atts['id'];
+	} else {
+		$filename = 'logo';
+	}
+
+	$file = file_get_contents( get_template_directory() . '/assets/img/'.$filename.'.svg' );
 	if(isset($atts['class'])) { $class = $atts['class']; } else { $class = ''; }
 	if($file) {
-		if(isset($atts['alt'])) {
-			print '<div class="logo alt '.$atts['type'].'-'.$atts['id'].' '.$class.'">';
-		} else {
-			print '<div class="logo '.$atts['type'].'-'.$atts['id'].' '.$class.'">';
-		}
+		$output .= '<div class="logo '.$atts['type'].'-'.$atts['id'].' '.$class.'">';
 
-		print $file;
+		$output .= $file;
 
-		print '</div>';
+		$output .= '</div>';
 	} else {
-		print 'A matching logo could not be found.';
+		$output .= 'A matching logo could not be found.';
 	}
 
-}
-add_shortcode('logo', 'logo_shortcode');
-
-function block_shortcode($atts) {
-	if(isset($atts['id'])) {
-		if($atts['id'] == 'our_people') {
-			$output = '';
-
-			$args = array(
-				'post_type' => 'people'
-			);
-			$loop = new WP_Query($args);
-
-			while($loop->have_posts()): $loop->the_post();
-				$output .= '<div class="small-10 medium-4 large-3 people">';
-					if(get_field('photo')):	  			$output .= '<div class="photo"><img src="'.get_field('photo').'" /></div>'; endif;
-																					$output .= '<h4 class="name">'.get_field('first_name').' '.get_field('last_name').'</h4>';
-				  if(get_field('position')):			$output .= '<div class="position">'.get_field('position').'</div>'; endif;
-					if(get_field('email')):	    		$output .= '<div class="email"><a href="mailto:'.get_field('email').'">'.get_field('email').'</a></div>'; endif;
-					if(get_field('phone_number')):	$output .= '<div class="phone">'.get_field('phone_number').'</div>'; endif;
-				$output .= '</div>';
-			endwhile;
-
-			wp_reset_postdata();
-
-		}
-	}
 	return $output;
 }
-
-add_shortcode('block', 'block_shortcode');
+add_shortcode('logo', 'logo_shortcode');

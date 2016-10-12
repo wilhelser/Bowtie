@@ -21,17 +21,8 @@
 
 <body <?php body_class(); ?>>
 
-<?php echo file_get_contents( get_template_directory() . '/assets/dist/sprite/sprite.svg' ); ?>
-
-
 <div class="off-canvas-wrapper">
   <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
-    <div class="title-bar show-for-small-only">
-      <div class="title-bar-left">
-        <button class="menu-icon" type="button" data-toggle="offCanvasLeft"></button>
-        <span class="title-bar-title"><?php bloginfo( 'name' ); ?></span>
-      </div>
-    </div><!-- .title-bar -->
     <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas>
 			<button class="close-button" aria-label="Close menu" type="button" data-close>
 				<span aria-hidden="true">&times;</span>
@@ -48,20 +39,19 @@
     </div><!-- #offCanvasLeft -->
     <div class="off-canvas-content" data-off-canvas-content>
 
-			<header id="masthead" class="" role="banner">
-				<section class="row column">
-					<h1 class="site-title">
-						<a href="<?php esc_attr_e( home_url( '/' ) ); ?>" rel="home">
-							<?php bloginfo( 'name' ); ?>
-						</a>
-					</h1>
-					<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
-				</section>
-				<nav id="site-navigation" class="top-bar show-for-medium" data-topbar role="navigation">
-					<section class="top-bar-section row column">
-						<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
-					</section>
-				</nav><!-- #site-navigation -->
+			<header class="main" role="banner">
+        <div class="row">
+  				<a href="<?php esc_attr_e( home_url( '/' ) ); ?>" rel="home">
+  						<h1 class="site-name"><?php bloginfo( 'name' ); ?></h1>
+              <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
+              <?php print do_shortcode('[logo]'); ?>
+  				</a>
+
+  				<nav class="main" role="navigation">
+            <button class="menu-icon" type="button" data-toggle="offCanvasLeft"></button>
+            <?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
+  				</nav><!-- #site-navigation -->
+        </div>
 			</header><!-- #masthead -->
 
 			<div id="content" class="site-content">

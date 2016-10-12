@@ -13,15 +13,16 @@
 </div><!-- #content -->
 
 <footer class="main" role="contentinfo">
-
-	<div class="column row">
-
-		<div class="logo"></div>
-
-		<?php dynamic_sidebar( 'footer' ); ?>
-
+	<div class="row">
+		<div class="medium-6 columns">
+			<?php print do_shortcode('[contact id="address"]'); ?>
+			<p class="copyright"><?php print get_field('copyright_name', 'options'); ?> &copy; <?php print date('Y'); ?></p>
+		</div>
+		
+		<div class="medium-6 columns">
+			<?php dynamic_sidebar( 'footer' ); ?>
+		</div>
 	</div><!-- .column.row -->
-
 </footer><!-- #colophon -->
 
 </div>
