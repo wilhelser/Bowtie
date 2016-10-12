@@ -1,0 +1,23 @@
+header.main {
+
+	.row {
+		@include flex;
+		@include flex-center;
+	}
+
+	.logo {
+		flex-basis: 230px;
+
+		svg {
+			max-width: 200px;
+		}
+	}
+
+	nav {
+		flex-grow: 1;
+
+		.menu-icon {
+			float: right;
+		}
+	}
+}
