@@ -266,10 +266,16 @@ add_action( 'add_meta_boxes', 'mb_colors_register_meta_boxes' );
 function mb_colors_display( $post ) {
 	//wp_nonce_field( basename( __FILE__ ), 'mb_colors_nonce' );
 
-	echo '<p>Click color to copy hex to clipboard.</p>';
 
-	echo '<div class="color-select clipboard bg-red" data-clipboard-text="#ED5549">#ed5549</div>';
-	echo '<div class="color-select clipboard bg-black" data-clipboard-text="#111f32">#111f32</div>';
+	if(have_rows('colors', 'options')):
+		echo '<p>Click color to copy to clipboard.</p>';
+		while(have_rows('colors', 'options')): the_row();
+			echo '<div class="color-select clipboard" style="background: '.get_sub_field('color').' " data-clipboard-text="'.get_sub_field('color').'">'.get_sub_field('label').'</div>';
+		endwhile;
+	else:
+		echo 'Go to <a href="/wp-admin/admin.php?page=acf-options">Options</a> to set brand colors for easy copying.';
+	endif;
+
 }
 
 function add_color_scripts( $hook ) {
