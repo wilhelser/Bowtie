@@ -181,6 +181,7 @@ gulp.task('foundation-js', function() {
 		paths.foundationJSpath + 'foundation.tabs.js',
 		paths.foundationJSpath + 'foundation.toggler.js',
 		paths.foundationJSpath + 'foundation.tooltip.js',
+		paths.foundationJSpath + 'foundation.zf.responsiveAccordionTabs.js',
 		paths.foundationJSpath + 'foundation.util.box.js',
 		paths.foundationJSpath + 'foundation.util.keyboard.js',
 		paths.foundationJSpath + 'foundation.util.motion.js',
