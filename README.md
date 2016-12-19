@@ -1,7 +1,7 @@
 # Bowtie
 ## The Infinite Agency
 
-This is Bowtie, the starter theme for The Infinite Agency based on Foundation for Sites, version ^6.2.3.
+This is Bowtie, the starter theme for The Infinite Agency based on Foundation for Sites, version ^6.3.0.
 
 
 ## Prerequisites
