@@ -47,7 +47,7 @@ var svgConfig = {
     symbol: { // symbol mode to build the SVG
       dest: 'sprite', // destination foldeer
       sprite: 'sprite.svg', //sprite name
-      example: true // Build sample page
+      example: false // Build sample page
     }
   },
   svg: {
