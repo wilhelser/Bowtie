@@ -3,10 +3,14 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 $colors: (
- 'red': (
-   base: #f00,
-   light: #de4b39
- ),
+'accent': (
+  base: #a7c059
+),
+'primary': (
+  light: lighten(#5e5a59, 10),
+  base: #5e5a59,
+  dark: darken(#5e5a59, 5),
+),
  'grey': (
    dark: #333,
    base: #999,
@@ -37,4 +41,3 @@ $colors: (
 // a {
 //   color: color('grey', 'dark');
 // }
-

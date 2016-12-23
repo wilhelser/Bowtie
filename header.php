@@ -39,16 +39,19 @@
   <div class="off-canvas-content" data-off-canvas-content>
 
 		<header class="main" role="banner">
-      <div class="row">
+      <div class="row small-12 columns">
 				<a href="<?php esc_attr_e( home_url( '/' ) ); ?>" rel="home">
-						<h1 class="site-name"><?php bloginfo( 'name' ); ?></h1>
-            <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
             <?php print do_shortcode('[logo]'); ?>
 				</a>
 
+        <div class="site-title">
+          <h1 class="site-name"><?php bloginfo( 'name' ); ?></h1>
+          <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
+        </div>
+
 				<nav class="main" role="navigation">
-          <button class="menu-icon" type="button" data-toggle="offCanvasRight"></button>
           <?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
+          <button class="menu-icon" type="button" data-toggle="offCanvasRight"></button>
 				</nav><!-- #site-navigation -->
       </div>
 		</header><!-- #masthead -->

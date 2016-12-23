@@ -27,7 +27,7 @@ var paths = {
 	imgPath: 'assets/img/'
 };
 
-var bsProxy = 'bowtie.dev';
+var bsProxy = 'bowtie-vagrant.dev';
 
 
 ////////////////////////////////////////////////////////////////////////////////

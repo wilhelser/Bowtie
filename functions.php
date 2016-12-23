@@ -186,6 +186,83 @@ if( function_exists('acf_add_options_page') ) {
 	acf_add_options_page();
 }
 
+/**
+ *
+ * Remove css adding margin-top to html
+ *
+ */
+add_action('get_header', 'remove_admin_login_header');
+function remove_admin_login_header() {
+	remove_action('wp_head', '_admin_bar_bump_cb');
+}
+
+/**
+ *
+ * Add Links to Admin Toolbar
+ * Infinite, Media, Options
+ *
+ */
+add_action( 'admin_bar_menu', 'bowtie_toolbar', 999 );
+function bowtie_toolbar( $wp_admin_bar ) {
+
+	$wp_admin_bar->remove_node('wp-logo');
+
+	$media_args = array(
+		'id' => 'toolbar_media',
+		'title' => 'Media',
+		'href' => get_site_url().'/wp-admin/upload.php',
+		'meta' => array( 'class' => 'toolbar-media' )
+	);
+	$wp_admin_bar->add_node( $media_args );
+
+	$options_args = array(
+		'id' => 'acf_options',
+		'title' => 'Options',
+		'href' => get_site_url().'/wp-admin/admin.php?page=acf-options',
+		'meta' => array( 'class' => 'acf-options' )
+	);
+	$wp_admin_bar->add_node( $options_args );
+
+}
+
+add_action( 'admin_bar_menu', 'bowtie_infinite_toolbar', 5 );
+function bowtie_infinite_toolbar( $wp_admin_bar ) {
+
+		$infinite_menu_args = array(
+			'id' => 'toolbar_infinite',
+			'title' => false,
+			'href' => 'http://theinfiniteagency.com',
+			'meta' => array( 'class' => 'toolbar-infinite' )
+		);
+		$wp_admin_bar->add_node( $infinite_menu_args );
+
+		$infinite_args = array(
+			'id' => 'toolbar_infinite_website',
+			'parent' => 'toolbar_infinite',
+			'title' => 'The Infinite Agency',
+			'href' => 'http://theinfiniteagency.com',
+			'meta' => array( 'class' => 'toolbar-infinite' )
+		);
+		$wp_admin_bar->add_node( $infinite_args );
+}
+
+
+add_filter( 'body_class', 'bowtie_slug_class' );
+/**
+ * Add Page Slug to Body Class
+ *
+ * @param  array $classes the current body classes
+ * @return array $classes modified classes
+ */
+function bowtie_slug_class( $classes ) {
+	if ( is_singular( 'page' ) ) {
+		global $post;
+		$classes[] = 'page-' . $post->post_name;
+	}
+	return $classes;
+}
+
+
 
 /**
  * Custom template tags for this theme.

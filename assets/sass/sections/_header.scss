@@ -1,4 +1,10 @@
 header.main {
+	padding: 1em 0;
+	background: color('primary');
+
+	a {
+		color: #fff;
+	}
 
 	.row {
 		@include flex;
@@ -7,17 +13,46 @@ header.main {
 
 	.logo {
 		flex-basis: 230px;
+		padding-right: 2em;
 
 		svg {
-			max-width: 200px;
+			height: 60px;
 		}
+	}
+
+	.site-title {
+		display: none;
 	}
 
 	nav {
+		@include flex;
+		align-items: center;
+		justify-content: flex-end;
 		flex-grow: 1;
 
 		.menu-icon {
-			float: right;
+			margin-left: 2em;
+		}
+
+		ul {
+			margin: 0;
+			padding: 0;
+
+			li {
+				list-style: none;
+
+				a {
+					font-weight: bold;
+				}
+			}
 		}
 	}
+}
+
+.hero {
+	@include flex;
+	@include flex-center;
+	height: 500px;
+	background: color('primary', 'dark');
+	color: #fff;
 }

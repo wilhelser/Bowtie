@@ -1,55 +1,58 @@
 <?php
 /**
- * The front-page.php template file.
+ * The template for displaying all pages.
  *
- * Learn more: http://codex.wordpress.org/Template_Hierarchy
+ * This is the template that displays all pages by default.
+ * Please note that this is the WordPress construct of pages
+ * and that other 'pages' on your WordPress site may use a
+ * different template.
+ *
+ * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package bowtie
  */
 
+$background = get_field('background');
+
 get_header(); ?>
 
-<div class="row">
+<div class="hero <?php print get_field('hero_disabled') ? 'disabled' : ''; ?>">
+  <div class="row">
+		<?php if(get_field('headline')): ?>
+		<h1><?php the_field('headline'); ?>
+		<?php else: ?>
+		<h1><?php the_title(); ?></h1>
+		<?php endif; ?>
 
-	<div class="medium-8 columns">
+    <?php if($background['type'] == 'video'): ?>
+    <video class="bg" loop="" autoplay="" preload="auto">
+      <source src="<?php print wp_get_attachment_url($background['ID']); ?>" type="<?php print $background['mime_type']; ?>">
+    </video>
+    <?php endif; ?>
+  </div>
+</div>
 
-		<div id="primary" class="content-area">
-			<main id="main" class="site-main" role="main">
+<main id="main" class="site-main" role="main">
 
-			<?php if ( have_posts() ) : ?>
+	<?php while ( have_posts() ) : the_post(); ?>
 
-				<?php /* Start the Loop */ ?>
-				<?php while ( have_posts() ) : the_post(); ?>
+		<?php get_template_part( 'components/content', 'page' ); ?>
 
-					<?php
-						/* Include the Post-Format-specific template for the content.
-						 * If you want to override this in a child theme, then include a file
-						 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-						 */
-						get_template_part( 'components/content', get_post_format() );
-					?>
+	<?php endwhile; // End of the loop. ?>
 
-				<?php endwhile; ?>
+	<?php get_template_part( 'components/content', 'blocks' ); ?>
 
-				<?php the_posts_navigation(); ?>
+	<?php //get_sidebar(); ?>
 
-			<?php else : ?>
+</main><!-- #main -->
 
-				<?php get_template_part( 'components/content', 'none' ); ?>
-
-			<?php endif; ?>
-
-			</main><!-- #main -->
-		</div><!-- #primary -->
-
-	</div><!-- .columns -->
-
-	<div class="medium-4 columns">
-
-		<?php get_sidebar(); ?>
-
-	</div><!-- .columns -->
-
-</div><!-- .row -->
+<?php if($background['type'] == 'image') { ?>
+<style>
+	.hero {
+		background: linear-gradient(90deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.4) 100%), url('<?php print wp_get_attachment_url($background['ID']); ?>') no-repeat center!important;
+		background-size: cover!important;
+	}
+</style>
+<?php } ?>
 
 <?php get_footer(); ?>
