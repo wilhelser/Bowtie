@@ -1,0 +1,43 @@
+
+.page.admin-bar {
+  margin-top: 32px;
+
+  @media (max-width: 782px) {
+    margin-top: 0;
+
+      header.main {
+        margin-top: 46px;
+      }
+  }
+}
+
+
+#wpadminbar #wp-admin-bar-acf_options>.ab-item:before {
+    content: "\f111";
+    top: 2px;
+}
+
+#wpadminbar #wp-admin-bar-toolbar_media>.ab-item:before {
+    content: "\f104";
+    top: 2px;
+}
+
+#wpadminbar #wp-admin-bar-toolbar_infinite>.ab-item:before {
+		content: ' ';
+		background-image: url('../../img/toolbar-tia.png')!important;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: contain;
+		width: 30px;
+		height: 20px;
+    top: 2px;
+		margin-right: 0;
+}
+
+#__bs_notify__ {
+  background: color('primary')!important;
+  top: auto!important;
+  bottom: 15px!important;
+  right: 15px!important;
+  border-radius: 6px!important;
+}

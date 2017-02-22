@@ -5,13 +5,13 @@ input[type="button"] {
 
 .button {
   padding: 0.5em 1em;
-  background: color('red');
+  background: color('accent');
   color: #fff;
 
   &.hollow {
     background: transparent;
-    border: 3px solid color('red');
-    color: color('red');
+    border: 3px solid color('accent');
+    color: color('accent');
 
     &.black {
       border-color: color('black');
