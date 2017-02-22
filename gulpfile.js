@@ -134,6 +134,7 @@ gulp.task('js', function() {
 	return gulp.src(paths.jsPath + '**/*.js')
 		.pipe(concat('app.js'))
 		.pipe(gulp.dest(paths.destPath + 'js'))
+		.pipe(babel({presets: ['es2015']}))
 		.pipe(uglify().on('error', notify.onError(function(error) {
 			return "Error: " + error.message;
 			}))
