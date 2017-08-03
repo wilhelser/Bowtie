@@ -1,3 +1,14 @@
+body {
+	&.menu-open {
+		height: 100%; width: 100%;
+		overflow: hidden;
+
+		nav.responsive {
+			transform: translateY(0)
+		}
+	}
+}
+
 header.main {
 	padding: 1em 0;
 	background: color('primary');
@@ -30,8 +41,10 @@ header.main {
 		justify-content: flex-end;
 		flex-grow: 1;
 
-		.menu-icon {
+		.hamburger {
+			display: block;
 			margin-left: 2em;
+			z-index: 8095;
 		}
 
 		ul {
@@ -47,6 +60,18 @@ header.main {
 			}
 		}
 	}
+}
+
+nav.responsive {
+	position: fixed;
+	top: 0; left: 0;
+	height: calc(100vh);
+	background: #fff;
+	transform: translateY(-100%);
+	transition: transform 0.3s ease-out;
+	will-change: transform;
+	width: 100%;
+	z-index: 8090;
 }
 
 .hero {

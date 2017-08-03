@@ -7,53 +7,65 @@
  * @package buckhead
  */
 
-?>
 
-<?php while(the_flexible_field('blocks')): ?>
-	<?php $get_row_layout = get_row_layout(); $width = get_sub_field('width'); ?>
-	<section class="block <?php print $get_row_layout; ?> <?php print 'height-'.get_sub_field('height'); ?> <?php print get_sub_field('padding') ? 'padded' : ''; ?>" id="block-<?php print get_row_index(); ?>">
-		<div class="row collapse <?php print $width[0] == 'full' ? 'expanded' : ''; ?> <?php print get_sub_field('vertical_align') == 'center' ? 'vertical-center': ''; ?>">
+ while(the_flexible_field('blocks')):
+ $disabled = get_sub_field('disable_block');
+ $get_row_layout = get_row_layout();
+ $width = get_sub_field('width');
+ $height = 'height-'.get_sub_field('height');
+ $padded = get_sub_field('padding') ? 'padded' : '';
+ $id = get_sub_field('custom_id') ? get_sub_field('custom_id') : 'block-'.get_row_index();
+ $fixed_pane = get_sub_field('fixed_pane');
+ $background_color = get_sub_field('select_brand_color');
+
+ $classes = implode(' ', array(
+   $get_row_layout,
+   $height,
+   $padded,
+   get_sub_field('additional_classes'),
+	 ($background_color ? 'bg__'.$background_color : ''),
+   ($get_row_layout == 'cta' ? 'padded flex-center': ''),
+ ));
+ $row_classes = implode(' ', array(
+	 ($width[0] == 'full' ? 'expanded' : ''),
+	 ($get_row_layout == 'cta' ? 'text-center': ''),
+ ));
+?>
+  <?php if(!$disabled): ?>
+	<section class="block <?php print $classes;  ?>" id="<?php print $id; ?>">
+		<div class="row small-12 <?php print $row_classes; ?>">
 			<?php if($get_row_layout == 'full'): ?>
-			<div class="column">
-				<?php the_sub_field('content'); ?>
-			</div>
-			<?php elseif($get_row_layout == 'two_column'): ?>
-			<div class="small-12 medium-6 columns left <?php print 'height-'.get_sub_field('height'); ?><?php print get_sub_field('background_image') ? ' with-photo' : ''; ?>">
-				<?php the_sub_field('content'); ?>
-			</div>
-			<div class="small-12 medium-6 columns right <?php print 'height-'.get_sub_field('height'); ?><?php print get_sub_field('background_image_r') ? ' with-photo' : ''; ?>">
-				<?php the_sub_field('content_r'); ?>
-			</div>
-			<?php endif; ?>
+			<?php the_sub_field('content'); ?>
+		  <?php elseif($get_row_layout == 'photo_and_text'): ?>
+				<div class="medium-10 medium-centered flex-center">
+					<?php if(get_sub_field('photo')): ?><div class="photo"><img src="<?php print get_sub_field('photo')['sizes']['large']; ?>" /></div><?php endif; ?>
+					<div class="content">
+						<?php the_sub_field('content'); ?>
+					</div>
+				</div>
+      <?php elseif($get_row_layout == 'cta'): ?>
+        <div>
+          <h1 class="text-white push-down-single"><?php print get_sub_field('title'); ?></h1>
+          <?php if(get_sub_field('button_link')): ?><a href="<?php print get_sub_field('button_link'); ?>" class="button"><?php print get_sub_field('button_text'); ?></a><?php endif; ?>
+        </div>
+      <?php elseif($get_row_layout == 'form'): ?>
+        <div class="medium-6 medium-centered columns">
+        <h1 class="text-center"><?php print get_sub_field('title'); ?></h1>
+        <p class="text-center description color__grey push__down--double"><?php print get_sub_field('subheading'); ?></h1>
+        <?php $form = get_sub_field('select_gravity_form'); ?>
+        <?php if($form == 1): ?>
+
+        <?php elseif($form == 2): ?>
+
+        <?php endif; ?>
+        </div>
+      <?php elseif($get_row_layout == 'quote'): ?>
+  			<div class="medium-8 medium-centered">
+  				<h2 class="headline text-center"><?php print get_sub_field('headline'); ?></h2>
+  				<div class="text--quote text--white"><span><?php print get_sub_field('quote'); ?></span></div>
+  			</div>
+  	  <?php endif; ?>
 		</div>
 	</section>
+  <?php endif; // if disabled ?>
 <?php endwhile; ?>
-
-<style>
-<?php while(the_flexible_field('blocks')): ?>
-	<?php $get_row_layout = get_row_layout(); ?>
-	<?php if($get_row_layout == 'full'): ?>
-	#block-<?php print get_row_index(); ?> {
-		<?php if(get_sub_field('background_color') || get_sub_field('background_image')): ?>
-		background: <?php print the_sub_field('background_color'); ?> url('<?php the_sub_field('background_image'); ?>') no-repeat center;
-		background-size: cover;
-		<?php endif; ?>
-	}
-	<?php endif; ?>
-
-	<?php if($get_row_layout == 'two_column'): ?>
-	#block-<?php print get_row_index(); ?> .left {
-		<?php if(get_sub_field('background_color') || get_sub_field('background_image')): ?>
-		background: <?php print the_sub_field('background_color'); ?> url('<?php the_sub_field('background_image'); ?>') no-repeat center;
-		background-size: cover;
-		<?php endif; ?>
-	}
-	#block-<?php print get_row_index(); ?> .right {
-		<?php if(get_sub_field('background_color_r') || get_sub_field('background_image_r')): ?>
-		background: <?php print the_sub_field('background_color_r'); ?> url('<?php the_sub_field('background_image_r'); ?>') no-repeat center;
-		background-size: cover;
-		<?php endif; ?>
-	}
-	<?php endif; ?>
-<?php endwhile; ?>
-</style>

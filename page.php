@@ -41,6 +41,7 @@ get_header(); ?>
 	<?php endwhile; // End of the loop. ?>
 
 	<?php get_template_part( 'components/content', 'blocks' ); ?>
+  <?php get_template_part( 'components/styles', 'blocks' ); ?>
 
 </main><!-- #main -->
 

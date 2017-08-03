@@ -24,7 +24,7 @@ var paths = {
 	jsPath: 'assets/js/',
 	destPath: 'assets/dist/',
 	foundationJSpath: 'node_modules/foundation-sites/js/',
-	imgPath: 'assets/img/'
+	imgPath: 'assets/images/'
 };
 
 var bsProxy = 'bowtie-vagrant.dev';

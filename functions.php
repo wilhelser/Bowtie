@@ -46,6 +46,7 @@ function bowtie_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
 		'primary' => esc_html__( 'Primary Menu', 'bowtie' ),
+		'responsive' => esc_html__( 'Responsive Menu', 'bowtie' ),
 	) );
 
 	/*
@@ -361,6 +362,42 @@ function mb_colors_display( $post ) {
 
 }
 
+function acf_load_color_field_choices( $field ) {
+  // reset choices
+  $field['choices'] = array();
+  // if has rows
+  if( have_rows('colors', 'option') ) {
+      // while has rows
+      while( have_rows('colors', 'option') ) {
+          // instantiate row
+          the_row();
+          // vars
+          $value = get_sub_field('class_suffix');
+          $label = get_sub_field('label');
+          // append to choices
+          $field['choices'][ $value ] = $label;
+      }
+  }
+  // return the field
+  return $field;
+}
+add_filter('acf/load_field/name=select_brand_color', 'acf_load_color_field_choices');
+
+function acf_load_gravity_field_choices( $field ) {
+    // reset choices
+    $field['choices'] = array();
+		$forms = GFAPI::get_forms();
+		foreach($forms as $form) {
+			$value = $form['id'];
+			$label = $form['title'];
+			// append to choices
+			$field['choices'][ $value ] = $label;
+		}
+
+    return $field;
+}
+add_filter('acf/load_field/name=select_gravity_form', 'acf_load_gravity_field_choices');
+
 function add_color_scripts( $hook ) {
 
   global $post;
@@ -408,13 +445,13 @@ add_shortcode('contact','contact_shortcode');
 function logo_shortcode($atts) {
 	$output = '';
 
-	if(isset($file['id'])) {
+	if(isset($atts['id'])) {
 		$filename = 'logo-'.$atts['id'];
 	} else {
 		$filename = 'logo';
 	}
 
-	$file = file_get_contents( get_template_directory() . '/assets/img/'.$filename.'.svg' );
+	$file = file_get_contents( get_template_directory() . '/assets/images/'.$filename.'.svg' );
 	if(isset($atts['class'])) { $class = $atts['class']; } else { $class = ''; }
 	if($file) {
 		$output .= '<div class="logo '.$atts['type'].'-'.$atts['id'].' '.$class.'">';
@@ -429,3 +466,28 @@ function logo_shortcode($atts) {
 	return $output;
 }
 add_shortcode('logo', 'logo_shortcode');
+
+function vector_shortcode($atts) {
+	$output = '';
+
+	if(isset($atts['id'])) {
+		$filename = $atts['id'];
+	} else {
+		$filename = '';
+	}
+
+	$file = file_get_contents( get_template_directory() . '/assets/images/'.$filename.'.svg' );
+	if(isset($atts['class'])) { $class = $atts['class']; } else { $class = ''; }
+	if($file) {
+		$output .= '<div class="vector '.$atts['id'].' '.$class.'">';
+
+		$output .= $file;
+
+		$output .= '</div>';
+	} else {
+		$output .= 'A matching vector could not be found.';
+	}
+
+	return $output;
+}
+add_shortcode('vector', 'vector_shortcode');

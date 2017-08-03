@@ -21,23 +21,6 @@
 
 <body <?php body_class(); ?>>
 
-<div class="off-canvas-wrapper">
-  <div class="off-canvas position-right" id="offCanvasRight" data-off-canvas>
-		<button class="close-button" aria-label="Close menu" type="button" data-close>
-			<span aria-hidden="true">&times;</span>
-		</button>
-		<?php
-		 $args = array (
-			 'theme_location' 	=> 'primary',
-			 'container' 				=> 'nav',
-			 'container_class'	=> 'offcanvas-navigation',
-			 'menu_class' 			=> 'mobile-menu',
-		 );
-			wp_nav_menu( $args );
-		?>
-  </div><!-- #offCanvasLeft -->
-  <div class="off-canvas-content" data-off-canvas-content>
-
 		<header class="main" role="banner">
       <div class="row small-12 columns">
 				<a href="<?php esc_attr_e( home_url( '/' ) ); ?>" rel="home">
@@ -51,9 +34,21 @@
 
 				<nav class="main" role="navigation">
           <?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
-          <button class="menu-icon" type="button" data-toggle="offCanvasRight"></button>
+          <button class="hamburger" type="button" data-menu><span class="hamburger-box"><span class="hamburger-inner"></span></span></button>
 				</nav><!-- #site-navigation -->
       </div>
+
+      <nav class="responsive">
+        <?php
+    		 $args = array (
+    			 'theme_location' 	=> 'responsive',
+    			 'container' 				=> 'nav',
+    			 'container_class'	=> 'offcanvas-navigation',
+    			 'menu_class' 			=> 'mobile-menu',
+    		 );
+    			wp_nav_menu( $args );
+    		?>
+      </nav>
 		</header><!-- #masthead -->
 
 		<div id="content" class="site-content">
