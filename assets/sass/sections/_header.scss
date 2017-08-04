@@ -10,11 +10,17 @@ body {
 }
 
 header.main {
+	width: 100%;
+	position: absolute;
 	padding: 1em 0;
-	background: color('primary');
 
 	a {
 		color: #fff;
+		text-transform: uppercase;
+
+		&:hover {
+			color: color('accent');
+		}
 	}
 
 	.row {
@@ -25,9 +31,11 @@ header.main {
 	.logo {
 		flex-basis: 230px;
 		padding-right: 2em;
+		padding-left: .9375rem;
 
 		svg {
-			height: 60px;
+			height: 80px;
+			width: auto;
 		}
 	}
 
@@ -55,6 +63,7 @@ header.main {
 				list-style: none;
 
 				a {
+					font-size: rem-calc(24);
 					font-weight: bold;
 				}
 			}
@@ -77,7 +86,13 @@ nav.responsive {
 .hero {
 	@include flex;
 	@include flex-center;
-	height: 500px;
+	padding-top: 120px;
+	height: 800px;
 	background: color('primary', 'dark');
 	color: #fff;
+
+	.content {
+		width: 600px;
+		max-width: 100%;
+	}
 }

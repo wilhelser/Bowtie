@@ -34,7 +34,7 @@
 
 				<nav class="main" role="navigation">
           <?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
-          <button class="hamburger" type="button" data-menu><span class="hamburger-box"><span class="hamburger-inner"></span></span></button>
+          <!-- <button class="hamburger" type="button" data-menu><span class="hamburger-box"><span class="hamburger-inner"></span></span></button> -->
 				</nav><!-- #site-navigation -->
       </div>
 

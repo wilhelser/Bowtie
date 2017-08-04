@@ -12,23 +12,25 @@
  * @package bowtie
  */
 
-$background = get_field('background');
+$background = get_field('hero_background_image');
 
 get_header(); ?>
 
 <div class="hero <?php print get_field('hero_disabled') ? 'disabled' : ''; ?>">
-  <div class="row">
-		<?php if(get_field('headline')): ?>
-		<h1><?php the_field('headline'); ?>
-		<?php else: ?>
-		<h1><?php the_title(); ?></h1>
-		<?php endif; ?>
+  <div class="row small-12 columns">
+    <div class="content">
+  		<h1><?php the_field('headline'); ?></h1>
+      <p class="subheading"><?php the_field('hero_copy'); ?></p>
 
-    <?php if($background['type'] == 'video'): ?>
-    <video class="bg" loop="" autoplay="" preload="auto">
-      <source src="<?php print wp_get_attachment_url($background['ID']); ?>" type="<?php print $background['mime_type']; ?>">
-    </video>
-    <?php endif; ?>
+      <form class="form">
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" name="email" placeholder="john@mail.com" />
+          <p class="description">By signing up, you accept the <a href="#">Terms &amp; Conditions</a></p>
+        </div>
+        <input type="submit" value="Sign Up" />
+      </form>
+    </div>
   </div>
 </div>
 
@@ -50,7 +52,7 @@ get_header(); ?>
 <?php if($background['type'] == 'image') { ?>
 <style>
 	.hero {
-		background: linear-gradient(90deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.4) 100%), url('<?php print wp_get_attachment_url($background['ID']); ?>') no-repeat center!important;
+		background: url('<?php print wp_get_attachment_url($background['ID']); ?>') no-repeat center!important;
 		background-size: cover!important;
 	}
 </style>
