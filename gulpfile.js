@@ -27,7 +27,7 @@ var paths = {
 	imgPath: 'assets/images/'
 };
 
-var bsProxy = 'brewedinhtown.dev';
+var bsProxy = 'bowtie-vagrant.dev';
 
 
 ////////////////////////////////////////////////////////////////////////////////
