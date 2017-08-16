@@ -3,20 +3,34 @@ input[type="button"] {
   @include button;
 }
 
-.button, input[type="submit"] {
-  margin: 0;
-  font-size: 1.2rem;
-  line-height: 1em;
-  padding: 1em 1em 0.8em;
+.button {
+  padding: 0.5em 1em;
   background: color('accent');
   color: #fff;
-  font-weight: 700;
-  text-transform: uppercase;
-  transition: none;
-  border-radius: 0.25em;
 
-  &:hover {
-    transition: none;
-    background: color('primary');
+  &.hollow {
+    background: transparent;
+    border: 3px solid color('accent');
+    color: color('accent');
+
+    &.black {
+      border-color: color('black');
+      color: color('black');
+
+      &:hover {
+        background: color('black');
+        color: #fff;
+      }
+    }
+
+    &.white {
+      border-color: #fff;
+      color: #fff;
+
+      &:hover {
+        background: #fff;
+        color: color('black');
+      }
+    }
   }
 }

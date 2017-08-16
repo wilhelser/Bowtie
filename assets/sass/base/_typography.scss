@@ -1,37 +1,16 @@
 // Typography
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
-$fonts-primary: 'Trade Gothic';
-
-body {
-	font-family: $fonts-primary;
-	color: color('primary');
-}
-
 p {
 	margin: 0;
-	font-size: rem-calc(20);
-}
-
-.subheading {
-	font-size: rem-calc(30);
-	line-height: rem-calc(40);
-	font-weight: bold;
-	margin-bottom: 1rem;
 }
 
 h1 {
-	font-size: rem-calc(64);
-	line-height: 1em;
+	font-size: 2rem;
 	font-weight: 700;
-	font-family: $fonts-primary;
-	text-transform: uppercase;
 }
 
 h2 {
 	font-size: 1.25rem;
 	font-weight: 700;
-	font-family: $fonts-primary;
-	text-transform: uppercase;
-	color: color('accent');
 }
