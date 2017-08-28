@@ -38,7 +38,7 @@ const config = {
         options: {
 					name: '[path][name].[ext]',
 					useRelativePath: false,
-					emitFile: false // Prevents files from generating (generating in assets/dist for some reason)
+					emitFile: false // Prevents files from moving since they're correctly referenced
         }
       },
 			{

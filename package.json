@@ -5,7 +5,7 @@
   "main": "gulpfile.js",
   "scripts": {
     "start": "webpack --watch",
-    "build": "webpack"
+    "build": "NODE_ENV=production webpack"
   },
   "repository": {
     "type": "git",
