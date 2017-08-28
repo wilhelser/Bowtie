@@ -11,8 +11,8 @@ This is Bowtie, the starter theme for The Infinite Agency based on Foundation fo
 
 ## How to get started
 1. Clone or [download](https://github.com/TheInfiniteAgency/bowtie/archive/master.zip "Download the Bowtie Zip") the project onto your `themes` directory `(./wp-content/themes)`
-2. From the theme directory, run `npm install`. All of the theme dependencies will be installed into `node_modules`.
-3. Update the proxy url in webpack.config.js to your Bowtie Vagrant dev install
+2. From the theme directory, run `npm install`.
+3. Update the proxy url in `webpack.config.js` to your local dev install.
 4. Run `npm start` to begin watching your files. Or run `npm run build` to generate your dist files.
 
 ## Webpack & BrowserSync
