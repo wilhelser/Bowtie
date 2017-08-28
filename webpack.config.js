@@ -66,7 +66,7 @@ const config = {
 		}),
 		new ExtractTextPlugin({
 			filename: 'css/[name].css',
-			publicPath: '/'
+			// publicPath: '/'
 		})
 	],
 	devtool: 'source-map'
