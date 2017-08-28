@@ -14,13 +14,13 @@ const config = {
 	output: {
 		filename: 'js/[name].js',
 		path: path.resolve(__dirname, './assets/dist'),
-		publicPath: '/dist/',
+		publicPath: '/wp-content/themes/bowtie/',
 	},
 	resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': path.join(__dirname, '')
+      '@': path.join(__dirname, '.')
     }
   },
 	module: {
@@ -32,6 +32,15 @@ const config = {
 					use: [ 'css-loader', 'postcss-loader', 'sass-loader' ]
 				})
 			},
+			{
+        test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+        loader: 'file-loader',
+        options: {
+					name: '[path][name].[ext]',
+					useRelativePath: false,
+					emitFile: false // Prevents files from generating (generating in assets/dist for some reason)
+        }
+      },
 			{
 				test: /\.js$/,
 				include: [

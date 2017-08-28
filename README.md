@@ -18,7 +18,7 @@ This is Bowtie, the starter theme for The Infinite Agency based on Foundation fo
 ## Webpack & BrowserSync
 Webpack will handle SASS compiling, vendor-prefixing, CSS/JS minification and trigger BrowserSync for browser reloading.
 
-All asset references within your SASS files will need to be referenced absolutely from the theme root, ex `(/assets/images/logo.png)`.
+All asset references within your SASS files will need to be referenced relative to the imported SASS files in `assets/sass`, ex `(../images/logo.png)`.
 
 You may use `import '@/assets/...'` to import a file relative to the theme root in your JS files, making it easier to move them around.
 

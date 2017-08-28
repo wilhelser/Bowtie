@@ -148,18 +148,6 @@ endif;
  */
 function bowtie_scripts() {
 
-	// Add Foundation JS to footer
-	wp_enqueue_script( 'foundation-js',
-		get_template_directory_uri() . '/assets/dist/js/foundation.js',
-		array( 'jquery' ), '6.2.3', true
-	);
-
-	// Add Sniff to footer
-	wp_enqueue_script( 'sniff',
-		get_template_directory_uri() . '/assets/dist/js/sniff.min.js',
-		null, '1.3.0', true
-	);
-
 	// Add our concatenated JS file after Foundation
 	$handle = 'bowtie_appjs';
 	$src =  get_template_directory_uri() . '/assets/dist/js/app.js';
