@@ -12,7 +12,7 @@
  * @package bowtie
  */
 
-$background = get_field('background');
+$background = get_field('hero_background_image');
 
 get_header(); ?>
 
