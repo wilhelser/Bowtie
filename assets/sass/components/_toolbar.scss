@@ -10,7 +10,9 @@
       }
   }
 }
-
+#wpadminbar #wp-admin-bar-search {
+  display: none;
+}
 
 #wpadminbar #wp-admin-bar-acf_options>.ab-item:before {
     content: "\f111";
