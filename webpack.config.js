@@ -58,7 +58,7 @@ const config = {
 		new BrowserSyncPlugin({
 			host: 'localhost',
       port: 3000,
-			proxy: 'http://bowtie-vagrant.dev',
+			proxy: 'http://bowtie-vagrant.localhost',
       files: [
         '**/*.php',
         '**/*.html'
