@@ -397,7 +397,7 @@ add_filter('acf/load_field/name=select_gravity_form', 'acf_load_gravity_field_ch
 function add_color_scripts( $hook ) {
 
   global $post;
-  wp_enqueue_script(  'clipboard-js', get_stylesheet_directory_uri().'/assets/js/clipboard.min.js', null, null, true );
+  wp_enqueue_script(  'clipboard-js', get_stylesheet_directory_uri().'/assets/js/vendors/clipboard.min.js', null, null, true );
 
 	wp_register_style('bowtie_admin', get_stylesheet_directory_uri().'/assets/dist/css/admin.css');
 	wp_enqueue_style('bowtie_admin');

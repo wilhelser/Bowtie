@@ -1,18 +1,10 @@
 @mixin flex() {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 
 @mixin flex-center() {
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
+  display: flex;
   align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -22,16 +14,31 @@
 
 .flex-center {
   @include flex;
-  @include flex-center;
+  align-items: center;
+  justify-content: center;
+
+  @include breakpoint(small down) {
+    display: block;
+  }
 }
 
-.push-down-single { margin-bottom: 1em;}
-.push-down-double { margin-bottom: 2em;}
-.push-down-triple { margin-bottom: 3em;}
+.flex-between {
+  @include flex;
+  align-items: center;
+  justify-content: space-between;
 
-.push-up-single { margin-top: 1em;}
-.push-up-double { margin-top: 2em;}
-.push-up-triple { margin-top: 3em;}
+  @include breakpoint(small down) {
+    display: block;
+  }
+}
+
+.push-down-single { margin-bottom: 1rem!important; }
+.push-down-double { margin-bottom: 2rem!important; }
+.push-down-triple { margin-bottom: 3rem!important; }
+
+.push-up-single { margin-top: 1rem!important; }
+.push-up-double { margin-top: 2rem!important; }
+.push-up-triple { margin-top: 3rem!important; }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Media query mixin

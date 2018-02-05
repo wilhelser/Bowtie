@@ -19,7 +19,7 @@ get_header(); ?>
 <div class="hero <?php print get_field('hero_disabled') ? 'disabled' : ''; ?>">
   <div class="row">
 		<?php if(get_field('headline')): ?>
-		<h1><?php the_field('headline'); ?>
+		<h1><?php the_field('headline'); ?></h1>
 		<?php else: ?>
 		<h1><?php the_title(); ?></h1>
 		<?php endif; ?>

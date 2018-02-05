@@ -1,6 +1,5 @@
 //import './foundation.js'
 import './vendors/sniff.min.js'
-import './vendors/browser-notification.js'
 import '@/assets/sass/app.scss'
 
 // Open and Close Menu
