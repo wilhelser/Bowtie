@@ -27,16 +27,9 @@
 
 </div>
 
-<<<<<<< HEAD
 <script>
 // Browser Update Notification
 // < IE 11 < Edge 12 or 6 Months out of date
-=======
-
-<script>
-// Browser Update Notification
-// < IE 11, Edge 12, or 6 Months out of date
->>>>>>> 354a1e7e65899bb979aca846cdaff374a252882e
 var $buoop = {vs:{i:12,f:-4,o:-4,s:8,c:-4},api:5};
 function $buo_f(){ 
  var e = document.createElement("script"); 
