@@ -23,12 +23,10 @@
    $height,
    $padded,
    get_sub_field('additional_classes'),
-	 ($background_color ? 'bg__'.$background_color : ''),
-   ($get_row_layout == 'cta' ? 'padded flex-center': ''),
+	 ($background_color ? 'bg-'.$background_color : ''),
  ));
  $row_classes = implode(' ', array(
 	 ($width[0] == 'full' ? 'expanded' : ''),
-	 ($get_row_layout == 'cta' ? 'text-center': ''),
  ));
 ?>
   <?php if(!$disabled): ?>
@@ -43,15 +41,10 @@
 						<?php the_sub_field('content'); ?>
 					</div>
 				</div>
-      <?php elseif($get_row_layout == 'cta'): ?>
-        <div>
-          <h1 class="text-white push-down-single"><?php print get_sub_field('title'); ?></h1>
-          <?php if(get_sub_field('button_link')): ?><a href="<?php print get_sub_field('button_link'); ?>" class="button"><?php print get_sub_field('button_text'); ?></a><?php endif; ?>
-        </div>
       <?php elseif($get_row_layout == 'form'): ?>
         <div class="medium-6 medium-centered columns">
         <h1 class="text-center"><?php print get_sub_field('title'); ?></h1>
-        <p class="text-center description color__grey push__down--double"><?php print get_sub_field('subheading'); ?></h1>
+        <p class="text-center description"><?php print get_sub_field('subheading'); ?></h1>
         <?php $form = get_sub_field('select_gravity_form'); ?>
         <?php if($form == 1): ?>
 
@@ -59,11 +52,6 @@
 
         <?php endif; ?>
         </div>
-      <?php elseif($get_row_layout == 'quote'): ?>
-  			<div class="medium-8 medium-centered">
-  				<h2 class="headline text-center"><?php print get_sub_field('headline'); ?></h2>
-  				<div class="text--quote text--white"><span><?php print get_sub_field('quote'); ?></span></div>
-  			</div>
   	  <?php endif; ?>
 		</div>
 	</section>

@@ -37,7 +37,19 @@ $colors: (
     @return map-get(map-get($colors, $color-name), $tone);
 }
 
-//usage
-// a {
-//   color: color('grey', 'dark');
-// }
+.bg-accent { background: color('accent')!important; }
+.bg-primary { background: color('primary')!important; }
+.bg-primary-light { background: color('primary','light')!important; }
+.bg-primary-dark { background: color('primary','dark')!important; }
+.bg-grey { background: color('grey')!important; }
+.bg-grey-light { background: color('grey','light')!important; }
+.bg-grey-dark { background: color('grey','dark')!important; }
+
+.text-white { background: color('white')!important; }
+.text-accent { background: color('accent')!important; }
+.text-primary { background: color('primary')!important; }
+.text-primary-light { background: color('primary','light')!important; }
+.text-primary-dark { background: color('primary','dark')!important; }
+.text-grey { background: color('grey')!important; }
+.text-grey-light { background: color('grey','light')!important; }
+.text-grey-dark { background: color('grey','dark')!important; }
