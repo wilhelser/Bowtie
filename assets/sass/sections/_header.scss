@@ -35,21 +35,29 @@ header.main {
 		display: none;
 	}
 
-	nav {
+	nav.main {
 		@include flex;
 		align-items: center;
 		justify-content: flex-end;
 		flex-grow: 1;
 
 		.hamburger {
-			display: block;
+			display: none;
 			margin-left: 2em;
 			z-index: 8095;
+
+			@include breakpoint(small down) {
+				display: block;
+			}
 		}
 
 		ul {
 			margin: 0;
 			padding: 0;
+
+			@include breakpoint(small down) {
+				display: none;
+			}
 
 			li {
 				list-style: none;
@@ -63,8 +71,12 @@ header.main {
 }
 
 nav.responsive {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	position: fixed;
 	top: 0; left: 0;
+	padding: 1rem;
 	height: calc(100vh);
 	background: #fff;
 	transform: translateY(-100%);
@@ -72,12 +84,59 @@ nav.responsive {
 	will-change: transform;
 	width: 100%;
 	z-index: 8090;
+	text-align: center;
+
+	.logo {
+		padding-right: 0;
+		margin-bottom: 1rem;
+	}
+
+	a {
+		color: color('accent');
+	}
+
+	.social {
+		margin: 1rem 0 0;
+
+		a {
+			font-size: 1.4rem;
+			
+			&:not(:last-child) {
+				margin-right: 1rem;
+			}
+		}
+	}
+
+	ul {
+		margin: 0;
+		padding: 0;
+
+		li {
+			list-style: none;
+			
+			a {
+				font-size: 2rem;
+			}
+		}
+	}
 }
 
 .hero {
+	position: relative;
 	@include flex;
 	@include flex-center;
 	height: 500px;
 	background: color('primary', 'dark');
 	color: #fff;
+
+	video.bg {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		min-width: 100%;
+		min-height: 100%;
+		transform: translateX(-50%) translateY(-50%);
+		z-index: 5000;
+	}
+
 }
